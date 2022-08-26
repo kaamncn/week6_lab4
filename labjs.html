@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function print(check, name, help) {
+            if (check >= 1) {
+                if (help == true) {
+                    console.log(name + " " + "ได้รับทุนการศึกษา" + " " + "เนื่องจากเกรดเฉลี่ยถึงเกณฑ์และยังช่วยงานภาควิชาด้วย")
+                }
+                else {
+                    console.log(name + " " + "ได้รับทุนการศึกษา" + " " + "เนื่องจากเกรดเฉลี่ยถึงเกณฑ์" + " ")
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        let student = [
+            {
+                fullname: 'นายตั้งใจ เรียนมาก',
+                age: 18,
+                year: 1,
+                gpa: 3.40,
+                help: true
+            },
+            {
+                fullname: 'นายสง่างาม ตลอดมา',
+                age: 19,
+                year: 2,
+                gpa: 3.00,
+                help: false
+            },
+            {
+                fullname: 'นางสาวใส่ใจ ดีงาม',
+                age: 20,
+                year: 3,
+                gpa: 2.90,
+                help: true
+            },
+            // {
+            //     fullname: 'แก้ม',
+            //     age: 21,
+            //     year: 3,
+            //     gpa: 3.20,
+            //     help: false
+            // },
+            // {
+            //     fullname: 'กลอย',
+            //     age: 17,
+            //     year: 4,
+            //     gpa: 2.90,
+            //     help: false
+            // }
+            //{
+            //     fullname: 'อิอิ',
+            //     age: ,
+            //     year: ,
+            //     gpa: ,
+            //     help: 
+            // }
+        ]
+        let check = new Array()
+        for (let i in student) {
+            check[i] = 0
+        }
+        let repeat = new Array(0, 0, 0, 0)
+        let year;
+        //console.log(student[i][1].fullname)
+        //console.log(check);
+        for (let i in student) {
+            year = 2565 - student[i].age
+            if (student[i].gpa >= 3.20) {
+                check[i]=1; //pass
+                repeat[student[i].year-1]++;
+                if (student[i].help == true) {
+                    console.log(student[i].fullname + " " + "เกิดเมื่อปี" + " " + year + " " + "ได้รับทุนการศึกษา" + " " + "เนื่องจากเกรดเฉลี่ยถึงเกณฑ์และยังช่วยงานภาควิชาด้วย")
+                }
+                else {
+                    console.log(student[i].fullname + " " + "เกิดเมื่อปี" + " " + year + " " + "ได้รับทุนการศึกษา" + " " + "เนื่องจากเกรดเฉลี่ยถึงเกณฑ์" + " ")
+                }
+
+            }
+            if (check[i] == 0) {
+                if (student[i].year >= 2 && student[i].gpa >= 2.75 && student[i].help == true) {
+                    check[i]=1;
+                    repeat[student[i].year-1]++;
+                    console.log(student[i].fullname + " " + "เกิดเมื่อปี" + " " + year + " " + "ได้รับทุนการศึกษา" + " " + "เนื่องจากเกรดเฉลี่ยถึงเกณฑ์และยังช่วยงานภาควิชาด้วย")
+                }
+                else {
+                    console.log(student[i].fullname + " " + "เกิดเมื่อปี" + " " + year + " " + "ไม่ได้รับทุนการศึกษา" + " " + "เนื่องจากเกรดเฉลี่ยไม่ถึงเกณฑ์และไม่ได้ช่วยงานภาควิชา")
+                }
+            }
+        }
+
+        console.log("ชั้นปีที่ 1")
+        for (let i in student) {
+            if (check[i] == 0 && repeat[0] == 0) {
+                console.log("ไม่มี")
+            }
+            if (student[i].year == 1) {
+                print(check[i], student[i].fullname, student[i].help)
+                repeat[0]++
+            }
+            
+        }
+
+        console.log("ชั้นปีที่ 2")
+        for (let i in student) {
+            if (check[i] == 0 && repeat[1] == 0) {
+                console.log("ไม่มี")
+            }
+            if (student[i].year == 2) {
+                print(check[i], student[i].fullname, student[i].help)
+                repeat[1]++;
+            }
+            
+        }
+        console.log("ชั้นปีที่ 3")
+        for (let i in student) {
+            if (check[i] == 0 && repeat[2] == 0) {
+                console.log("ไม่มี")
+            }
+            if (student[i].year == 3) {
+                print(check[i], student[i].fullname, student[i].help)
+                repeat[2]++
+            }
+            
+        }
+        for (let i in student) {
+            if (student[i].year == 4) {
+                console.log("ชั้นปีที่ 4")
+                for (let i in student) {
+                    if (check[i] == 0 && repeat[3] == 0) {
+                        console.log("ไม่มี")
+                    }
+                    if (student[i].year == 4) {
+                        print(check[i], student[i].fullname, student[i].help)
+                        repeat[3]++
+                    }
+                    
+                }
+                break;
+            }
+        }
+    </script>
+</body>
+
+</html>
